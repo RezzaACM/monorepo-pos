@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # product-service-ms:
+  #   container_name: product-services-ms
+  #   image: rezzaacm/product-service:1.0.0
+  #   build:
+  #     context: .
+  #     # target: development --> if have more than 1 env
+  #     dockerfile: ./Dockerfile
+  #   command: npm run listen
+  #   volumes:
+  #     - .:/user/src/app
+  #     - /user/src/app/node_modules
+  #   networks:
+  #     - my-net
+
+  product-service-api:
+    container_name: product-services-api
+    image: rezzaacm/product-service:1.0.0
+    build:
+      context: .
+      # target: development --> if have more than 1 env
+      dockerfile: ./Dockerfile
+    command: npm run start:dev
+    ports:
+      - '3003:3003'
+    environment:
+      DB_CONNECTION: 'mongodb+srv://rezza-dev:caiTSi7gOz3Zs2Va@cluster0.xfxq9.mongodb.net/product-service?retryWrites=true&w=majority'
+      PORT: 3003
+
+networks:
+  my-net:
+    external: true

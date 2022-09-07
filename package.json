@@ -1,0 +1,13 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^5.5.0"
+  },
+  "scripts": {
+    "start:server:dev": "lerna run --parallel --ignore @nest-starter/client start:dev -- -- -r ./product.env"
+  }
+}
