@@ -8,6 +8,10 @@
     "lerna": "^5.5.0"
   },
   "scripts": {
-    "start:server:dev": "lerna run --parallel --ignore @nest-starter/client start:dev -- -- -r ./product.env"
+    "ng": "ng",
+    "start": "lerna run start --stream",
+    "start:server:dev": "lerna run --parallel --ignore @nest-starter/client start:dev --stream",
+    "start:admin:dev": "lerna run start --parallel --scope=admin-angular --stream",
+    "release:patch": "lerna version patch"
   }
 }
